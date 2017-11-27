@@ -9,7 +9,7 @@ def existing_audio_file(fname):
     path = Path(fname)
     exts = {'.mp3', '.m4a', '.ogg', '.flac', '.wma'}
     if path.is_file() and path.suffix in exts:
-        return path
+        return path.resolve()
     raise ArgumentTypeError(fname)
 
 
