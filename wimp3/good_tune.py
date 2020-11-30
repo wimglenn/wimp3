@@ -9,11 +9,12 @@ def existing_audio_file(fname):
     path = Path(fname)
     exts = {'.mp3', '.m4a', '.ogg', '.flac', '.wma'}
     if path.is_file() and path.suffix in exts:
-        return path.resolve()
+        return path
     raise ArgumentTypeError(fname)
 
 
 def guess_artist_and_title(path):
+    path = path.resolve()
     artist_guess = path.parent.parent.name.lower()
     if artist_guess == 'various':
         artist_guess, title_guess = path.name.lower().split('-', 2)[1:]
